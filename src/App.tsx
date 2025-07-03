@@ -1,7 +1,9 @@
+import { Text } from "./components/Text";
+
 export function App() {
   return (
-    <div>
-      <h1 className="text-red-700">Hello World</h1>
-    </div>
+   <main className="py-28 px-4">
+    
+   </main>
   );
 }
