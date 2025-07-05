@@ -33,9 +33,12 @@ Esta aplicação simula uma calculadora simples com histórico de operações, f
 - [Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Google Fonts](https://fonts.google.com/)
 
 ---
+
+<p align="center">
+  <img alt="calculator" src="">
+</p>
 
 ✍️ Autor
 Bruno Oliveira
