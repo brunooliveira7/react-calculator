@@ -37,7 +37,7 @@ Esta aplicação simula uma calculadora simples com histórico de operações, f
 ---
 
 <p align="center">
-  <img alt="calculator" src="">
+  <img alt="calculator" src="https://github.com/brunooliveira7/react-calculator/blob/main/src/assets/Layout%20Calculator.png">
 </p>
 
 ✍️ Autor
