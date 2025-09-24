@@ -1,6 +1,3 @@
-import { Text } from "./components/Text";
-import { Button } from "./components/Button";
-import { Card } from "./components/Card";
 import { Calculator } from "./components/Calculator";
 import { OperationHistory } from "./components/OperationHistory";
 
