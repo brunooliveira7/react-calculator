@@ -37,6 +37,11 @@ export function Calculator({
   className,
   children,
 }: React.HTMLAttributes<HTMLDivElement>) {
+
+  function handleInputClick(input: string) {
+    console.log(input);
+  }
+
   return (
     // Container principal
     <Card
@@ -60,6 +65,7 @@ export function Calculator({
                 key={button.input}
                 className={button.className ?? "w-16 h-16"}
                 variant={(button.variant as "primary" | "default") ?? "default"}
+                onClick={() => handleInputClick(button.input)}
               >
                 {button.input}
               </Button>

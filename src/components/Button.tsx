@@ -4,6 +4,7 @@ interface ButtonProps {
   className?: string;
   children: React.ReactNode;
   variant?: keyof typeof buttonVariants;
+  onClick?: () => void;
 }
 
 const buttonVariants = {
