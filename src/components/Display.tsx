@@ -15,16 +15,20 @@ export function Display({ className, operation, result }: DisplayProps) {
         select-none
         ${className ?? ""}
       `}
-     >
+    >
       {/*Primeira linha - histórico da digitação  */}
-      <Text as="div" variant="muted" className="flex items-center justify-end">
-        {operation}
+      <Text
+        as="div"
+        variant="muted"
+        className="flex items-center justify-end h-7"
+      >
+        {result && operation}
       </Text>
 
       {/*Segunda linha - resultado */}
-      <div className={`flex items-center justify-between`}>
+      <div className={`flex items-center justify-between h-9`}>
         <Text variant="muted">=</Text>
-        <Text variant="blast">{result}</Text>
+        <Text variant="blast">{result || operation}</Text>
       </div>
     </div>
   );

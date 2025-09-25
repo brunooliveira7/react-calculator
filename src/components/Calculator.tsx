@@ -1,6 +1,7 @@
 import { Card } from "./Card";
 import { Display } from "./Display";
 import { Button } from "./Button";
+import { useState } from "react";
 
 const buttons = [
   [
@@ -37,9 +38,44 @@ export function Calculator({
   className,
   children,
 }: React.HTMLAttributes<HTMLDivElement>) {
+  const [operation, setOperation] = useState(""); //guarda valor digitado
+  const [result, setResult] = useState("");
 
-  function handleInputClick(input: string) {
-    console.log(input);
+  function handleInputClick(input: any) {
+    if (input === "C") {
+      setOperation(""); //apaga a operação
+      setResult(""); //apaga o resultado
+      return;
+    }
+
+    if (input === "CE") {
+      setResult("");
+      setOperation(operation.slice(0, -2));
+      return;
+    }
+
+    if (input === "=") {
+      const operationResult = eval(operation.replace(/,/g, ".")); //eval faz quaisquer operações
+      const parsedResult = operationResult.toString()?.replace(/\./g, ",");
+      setResult(parsedResult);
+      return;
+    }
+
+    //limpa o input de cima e continua uma operação com o result da prev-operation
+    if (result) {
+      setOperation(
+        isNaN(input) ? `${result}${input === "," ? "" : " "}${input}` : input
+      );
+      setResult("");
+      return;
+    }
+
+    if (input === "," && !operation.endsWith(",")) {
+      setOperation(`${operation},`);
+      return;
+    }
+
+    setOperation(`${operation}${operation.endsWith(",") ? "" : " "}${input}`); //operação vai ser incrementada com input
   }
 
   return (
@@ -54,7 +90,7 @@ export function Calculator({
       {children}
 
       {/* Exibição do resultado */}
-      <Display operation="1 + 2" result="3" />
+      <Display operation={operation} result={result} />
 
       {/* Botões da calculadora */}
       <div className="flex flex-col gap-3">
