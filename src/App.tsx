@@ -1,5 +1,6 @@
 import { Calculator } from "./components/Calculator";
 import { OperationHistory } from "./components/OperationHistory";
+import { CalculatorProvider } from "./components/CalculatorContext";
 
 export function App() {
   return (
@@ -9,8 +10,10 @@ export function App() {
       sm:items-stretch gap-2
    `}
     >
-      <Calculator />
-      <OperationHistory />
+      <CalculatorProvider>
+        <Calculator />
+        <OperationHistory />
+      </CalculatorProvider>
     </main>
   );
 }

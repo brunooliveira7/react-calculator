@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Card } from "./Card";
 import { Text } from "./Text";
+import { CalculatorContext } from "./CalculatorContext";
 
 export function OperationHistory() {
+  const { history } = useContext(CalculatorContext);
+
   return (
     // Container principal
     <Card
@@ -16,11 +20,19 @@ export function OperationHistory() {
       </Text>
 
       {/* Lista de operações */}
-      <ul className="flex flex-col gap-3">
-        <Text as="li">1 + 2 = 3</Text>
-        <Text as="li">2 + 3 = 5</Text>
-        <Text as="li">4 * 5 = 20</Text>
-      </ul>
+      {history.length > 0 ? (
+        <ul className="flex flex-col gap-3">
+          {history.map((value, index) => (
+            <Text key={`item-${index}`} as="li">
+              {value}
+            </Text>
+          ))}
+        </ul>
+      ) : (
+        <Text as="p" variant="muted">
+          Nenhuma operação recente.
+        </Text>
+      )}
     </Card>
   );
 }
