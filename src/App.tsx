@@ -1,6 +1,6 @@
 import { Calculator } from "./components/Calculator";
 import { OperationHistory } from "./components/OperationHistory";
-import { CalculatorProvider } from "./components/CalculatorContext";
+import { CalculatorProvider } from "./context/CalculatorContext";
 
 export function App() {
   return (

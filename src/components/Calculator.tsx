@@ -2,7 +2,7 @@ import { Card } from "./Card";
 import { Display } from "./Display";
 import { Button } from "./Button";
 import { useContext, useState } from "react";
-import { CalculatorContext } from "./CalculatorContext";
+import { CalculatorContext } from "../context/CalculatorContext";
 
 const buttons = [
   [

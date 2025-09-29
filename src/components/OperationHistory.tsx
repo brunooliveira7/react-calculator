@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Card } from "./Card";
 import { Text } from "./Text";
-import { CalculatorContext } from "./CalculatorContext";
+import { CalculatorContext } from "../context/CalculatorContext";
 
 export function OperationHistory() {
   const { history } = useContext(CalculatorContext);
