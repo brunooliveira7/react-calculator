@@ -60,7 +60,7 @@ export function Calculator({
       const operationResult = eval(operation.replace(/,/g, ".")); //eval faz quaisquer operações
       const parsedResult = operationResult.toString()?.replace(/\./g, ",");
       setResult(parsedResult);
-      updateHistory(operation, parsedResult);
+      updateHistory(operation, parsedResult); //guarda e atualiza a lista com o [] do context
       return;
     }
 

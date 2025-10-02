@@ -19,7 +19,7 @@ export function OperationHistory() {
         Histórico de operações
       </Text>
 
-      {/* Lista de operações */}
+      {/* Lista de operações usando a var do context*/}
       {history.length > 0 ? (
         <ul className="flex flex-col gap-3">
           {history.map((value, index) => (
