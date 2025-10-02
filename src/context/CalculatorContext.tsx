@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createContext } from "react";
 
 interface CalculatorContextProps {
@@ -20,6 +20,12 @@ export const CalculatorContext = createContext<CalculatorContextProps>({
 export function CalculatorProvider({ children }: CalculatorProviderProps) {
   const [history, setHistory] = useState<string[]>([]);
   const historyStorageKey = "history";
+
+  //consumir e renderizar histórico - [] - dependência quando o componente for criado
+  useEffect(() => {
+    const savedHistory = localStorage.getItem(historyStorageKey);
+    setHistory(JSON.parse(savedHistory || "[]"));
+  }, []);
 
   function updateHistory(operation: string, parsedResult: string) {
     setHistory((prev) => {
