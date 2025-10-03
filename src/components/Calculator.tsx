@@ -1,8 +1,7 @@
 import { Card } from "./Card";
 import { Display } from "./Display";
 import { Button } from "./Button";
-import { useContext, useState } from "react";
-import { CalculatorContext } from "../context/CalculatorContext";
+import { useCalculator } from "../hooks/useCalculator";
 
 const buttons = [
   [
@@ -39,44 +38,10 @@ export function Calculator({
   className,
   children,
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [operation, setOperation] = useState(""); //guarda valor digitado
-  const [result, setResult] = useState("");
-  const { updateHistory } = useContext(CalculatorContext);
+  const { operation, result, doOperation } = useCalculator();
 
   function handleInputClick(input: any) {
-    if (input === "C") {
-      setOperation(""); //apaga a operação
-      setResult(""); //apaga o resultado
-      return;
-    }
-
-    if (input === "CE") {
-      setResult("");
-      setOperation(operation.slice(0, -1));
-      return;
-    }
-
-    if (input === "=") {
-      const operationResult = eval(operation.replace(/,/g, ".")); //eval faz quaisquer operações
-      const parsedResult = operationResult.toString()?.replace(/\./g, ",");
-      setResult(parsedResult);
-      updateHistory(operation, parsedResult); //guarda e atualiza a lista com o [] do context
-      return;
-    }
-
-    //limpa o input de cima e continua uma operação com o result da prev-operation
-    if (result) {
-      setOperation(isNaN(input) ? `${result}${input}` : input);
-      setResult("");
-      return;
-    }
-
-    if (input === "," && !operation.endsWith(",")) {
-      setOperation(`${operation},`);
-      return;
-    }
-
-    setOperation(`${operation}${input}`); //operação vai ser incrementada com input
+    doOperation(input);
   }
 
   return (
